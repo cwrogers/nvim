@@ -18,8 +18,6 @@ opt.foldexpr = 'nvim_treesitter#foldexpr()'
 
 opt.ignorecase = true
 
-
-
 -- Global variables
 g.mapleader = ',' -- Leader key
 
@@ -63,5 +61,11 @@ if not vim.loop.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
+
+
+vim.o.shell = "powershell.exe"
+vim.o.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command"
+vim.o.shellquote = "\""
+vim.o.shellxquote = "\""
 
 

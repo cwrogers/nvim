@@ -1,6 +1,5 @@
 local telescope = require('telescope')
 local treesitter = require('nvim-treesitter.configs')
--- local nvimtree = require('nvim-tree')
 local lualine = require('lualine')
 local neotest = require('neotest');
 local gitsigns = require('gitsigns');

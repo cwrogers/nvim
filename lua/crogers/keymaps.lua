@@ -1,6 +1,8 @@
 local keymap = vim.keymap.set
 local builtin = require('telescope.builtin')
 local pretty_hover = require('pretty_hover')
+local dap = require('dap')
+local dapui = require('dapui')
 
 local actions = require('crogers.actions')
 local nuget = require('crogers.nuget')
@@ -38,11 +40,11 @@ keymap('n', '<leader>fc', ':Easypick changed_files', { desc = "View changed file
 
 keymap('v', 'fg', 'y<ESC>:Telescope live_grep default_text=<c-r>0<CR>', { desc = "Live grep selection" })
 
-
+keymap('n', '<leader>db', dapui.toggle, { desc = "Zen Mode" })
 
 keymap('n', '<leader>z', ':lua Snacks.zen()<CR>', { desc = "Zen Mode" })
 keymap('n', '<leader>gg', ':lua Snacks.lazygit()<CR>', { desc = "lazygit" })
-keymap('n', '<leader>gd', ':Gitsigns toggle_word_diff<CR>', { desc = "Git diff" })
+keymap('n', '<leader>gd', ':Gitsigns preview_hunk<CR>', { desc = "Git diff" })
 keymap('n', '<leader>gh', ':Gitsigns preview_hunk<CR>', { desc = "Git diff" })
 keymap('n', '<leader>gb', ':Gitsigns blame<CR>', { desc = "Git blame" })
 keymap('n', '<C-T>', ':lua Snacks.terminal.toggle()<CR>', { desc = "Toggle terminal" })
@@ -75,8 +77,6 @@ keymap('n', 'gd', actions.goto_definition_or_show_usages, { desc = "Go to defini
 keymap('n', '<leader>d', actions.goto_definition_or_show_usages, { desc = "Go to definition" })
 keymap('n', 'gi', vim.lsp.buf.implementation, { desc = "Go to implementation" })
 keymap('n', '<leader>i', vim.lsp.buf.implementation, { desc = "Go to implementation" })
-
-
 
 
 -- Miscellaneous
