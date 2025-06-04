@@ -1,9 +1,14 @@
 local telescope = require('telescope')
 local treesitter = require('nvim-treesitter.configs')
-local nvimtree = require('nvim-tree')
+-- local nvimtree = require('nvim-tree')
 local lualine = require('lualine')
 local neotest = require('neotest');
+local gitsigns = require('gitsigns');
+local neogen = require('neogen')
+local easypick = require('easypick')
 
+
+require("tabs-vs-spaces").setup()
 
 treesitter.setup({
   ensure_installed = 'javascript',
@@ -50,32 +55,56 @@ telescope.setup({
   },
 })
 
+easypick.setup({
+  pickers = {
+		{
+			name = "changed_files",
+			command = "git diff --name-only",
+			previewer = easypick.previewers.branch_diff({base_branch = "dev"})
+		},
+  }
+})
+
+neogen.setup({
+  enabled = true,
+  input_after_comment = true,
+  languages = {
+    cs = {
+      template = {
+        annotation_convention = "xmldoc"
+      }
+    }
+  }
+})
+
+gitsigns.setup();
+
 neotest.setup({
   adapters = {
     require("neotest-dotnet")
   }}
 )
-
-nvimtree.setup({
-  view = {
-    width = 30,
-    side = 'left',
-  },
-  renderer = {
-    icons = {
-      glyphs = {
-        folder = {
-          arrow_closed = "",
-          arrow_open = "",
-        },
-      },
-    },
-  },
-  git = {
-    enable = true,       -- Show git status
-  },
-})
-
+--
+-- nvimtree.setup({
+--   view = {
+--     width = 30,
+--     side = 'left',
+--   },
+--   renderer = {
+--     icons = {
+--       glyphs = {
+--         folder = {
+--           arrow_closed = "",
+--           arrow_open = "",
+--         },
+--       },
+--     },
+--   },
+--   git = {
+--     enable = true,       -- Show git status
+--   },
+-- })
+--
 lualine.setup {
   options = {
     icons_enabled = true,

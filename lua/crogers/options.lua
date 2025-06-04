@@ -11,6 +11,15 @@ opt.expandtab = true      -- Use spaces instead of tabs
 opt.mouse = 'a'           -- Enable mouse support
 -- opt.clipboard = 'unnamedplus' -- Use system clipboard
 
+opt.fixeol = false
+opt.foldlevel = 99
+opt.foldmethod = 'expr'
+opt.foldexpr = 'nvim_treesitter#foldexpr()'
+
+opt.ignorecase = true
+
+
+
 -- Global variables
 g.mapleader = ',' -- Leader key
 
@@ -23,6 +32,7 @@ local filetype_tab_sizes = {
   json = { tabstop = 2, shiftwidth = 2, expandtab = true },
   javascript = { tabstop = 2, shiftwidth = 2, expandtab = true },
   yaml = { tabstop = 2, shiftwidth = 2, expandtab = true },
+  cs = { tabstop = 4, shiftwidth = 4, expandtab = true },
 }
 
 -- Apply tab settings for each filetype
@@ -53,4 +63,5 @@ if not vim.loop.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
+
 
