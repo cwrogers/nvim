@@ -1,9 +1,7 @@
 return {
   'neovim/nvim-lspconfig',
-  'zbirenbaum/copilot.lua',
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim',
-  'giuxtaposition/blink-cmp-copilot',
   {
     'saghen/blink.cmp',
     lazy = false, -- lazy loading handled internally
@@ -16,16 +14,22 @@ return {
         nerd_font_variant = 'mono'
       },
       sources = {
-        default = { 'copilot', 'lsp', 'path', 'snippets', 'buffer' },
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
         providers = {
-          copilot = {
-            name = 'copilot',
-            module = 'blink-cmp-copilot',
-          },
         },
       },
     },
     opts_extend = { 'sources.default' }
   },
-
+  {
+    'seblyng/roslyn.nvim',
+    ft = 'cs',
+    filewatching= true
+  },
+  {
+    'hedyhli/outline.nvim',
+    dependencies = {
+      'epheien/outline-treesitter-provider.nvim'
+    }
+  }
 }

@@ -1,5 +1,8 @@
 return {
-  "folke/tokyonight.nvim",
+  {
+    "folke/snacks.nvim",
+    opts = require('crogers.plugin-configs.snacks-conf')
+  },
   {
     'nvim-telescope/telescope.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' }
@@ -7,10 +10,6 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate'
-  },
-  {
-    'nvim-tree/nvim-tree.lua',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
   {
     'nvim-lualine/lualine.nvim',
@@ -66,5 +65,9 @@ return {
     "Fildo7525/pretty_hover",
     event = "LspAttach",
     opts = {}
-  }
+  },
+  "danymat/neogen",
+  "lewis6991/gitsigns.nvim",
+  "axkirillov/easypick.nvim",
+  "tenxsoydev/tabs-vs-spaces.nvim"
 }

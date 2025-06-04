@@ -1,12 +1,17 @@
-local copilot = require('copilot')
+-- local copilot = require('copilot')
 local mason = require('mason')
 local mason_lspconfig = require('mason-lspconfig')
 local lspconfig = require('lspconfig')
 
 -- Initialize Mason
-mason.setup()
+mason.setup({
+  registries = {
+    "github:mason-org/mason-registry",
+    "github:Crashdummyy/mason-registry"
+  }
+})
 mason_lspconfig.setup({
-  ensure_installed = { 'pyright', 'ts_ls', 'lua_ls' }, -- Add your desired LSPs
+  ensure_installed = { 'pyright', 'ts_ls', 'lua_ls' },
   automatic_installation = true,
 })
 
@@ -18,8 +23,10 @@ mason_lspconfig.setup_handlers({
   end,
 })
 
-copilot.setup({
-  suggestion = { enabled = false },
-  panel = { enabled = false },
+require("outline").setup()
+require("roslyn").setup()
+
+lspconfig.roslyn.setup({
+  autostart = true
 })
 
